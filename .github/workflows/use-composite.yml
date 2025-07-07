@@ -1,0 +1,17 @@
+name: Composite Action Workflow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  run-composite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run my hello composite action
+        uses: ./.github/actions/hello-action
+        with:
+          name: Suraj
