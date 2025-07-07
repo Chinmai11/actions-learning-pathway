@@ -1,0 +1,15 @@
+name: Reusable Build Workflow
+
+on:
+  workflow_call:
+    inputs:
+      project_name:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print project name
+        run: echo "Building ${{ inputs.project_name }} project..."
