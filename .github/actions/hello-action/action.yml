@@ -1,0 +1,12 @@
+name: Hello Composite Action
+description: Says Hello with input
+
+inputs:
+  name:
+    required: true
+    description: Your name
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Hello, ${{ inputs.name }}!"
