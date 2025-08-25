@@ -1,0 +1,11 @@
+name: Main Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    uses: ./.github/workflows/node-ci.yml
+    with:
+      node-version: '20'
