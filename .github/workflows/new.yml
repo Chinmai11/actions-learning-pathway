@@ -5,7 +5,9 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    uses: ./.github/workflows/node-ci.yml
+  use-build:
+    uses: ./.github/workflows/build.yml   # 👈 Reference reusable workflow
     with:
-      node-version: '20'
+      node-version: '18'                  # Pass input
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Pass secret
