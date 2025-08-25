@@ -1,14 +1,17 @@
-name: Node.js CI
+name: Build Workflow   # Just a name for humans
 
 on:
-  workflow_call:
-    inputs:
+  workflow_call:       # 👈 This makes it reusable!
+    inputs:            # (Optional) Define inputs like function args
       node-version:
-        required: true
         type: string
+        required: true
+    secrets:           # (Optional) Define secrets needed
+      NPM_TOKEN:
+        required: false
 
 jobs:
-  ci:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +22,7 @@ jobs:
           node-version: ${{ inputs.node-version }}
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run tests
         run: npm test
